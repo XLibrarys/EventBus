@@ -21,10 +21,13 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.lang.reflect.Method;
 
-/** Base class for generated subscriber meta info classes created by annotation processing. */
+/** 由注释处理创建的生成订阅元信息类的基类。*/
 public abstract class AbstractSubscriberInfo implements SubscriberInfo {
+    //subscriber类
     private final Class subscriberClass;
+    //subscriber类父类
     private final Class<? extends SubscriberInfo> superSubscriberInfoClass;
+    //是否检查父类
     private final boolean shouldCheckSuperclass;
 
     protected AbstractSubscriberInfo(Class subscriberClass, Class<? extends SubscriberInfo> superSubscriberInfoClass,

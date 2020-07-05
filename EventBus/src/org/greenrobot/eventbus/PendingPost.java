@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 final class PendingPost {
+    //PendingPost缓存，避免大量重复创建PendingPost
     private final static List<PendingPost> pendingPostPool = new ArrayList<PendingPost>();
 
     Object event;
@@ -30,6 +31,7 @@ final class PendingPost {
         this.subscription = subscription;
     }
 
+    //从pendingPostPool中获取PendingPost对象，避免大量重复创建
     static PendingPost obtainPendingPost(Subscription subscription, Object event) {
         synchronized (pendingPostPool) {
             int size = pendingPostPool.size();
@@ -44,6 +46,7 @@ final class PendingPost {
         return new PendingPost(event, subscription);
     }
 
+    //释放PendingPost，还回pendingPostPool待后续继续使用
     static void releasePendingPost(PendingPost pendingPost) {
         pendingPost.event = null;
         pendingPost.subscription = null;

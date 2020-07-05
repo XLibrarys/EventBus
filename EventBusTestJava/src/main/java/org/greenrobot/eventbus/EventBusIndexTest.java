@@ -26,7 +26,7 @@ import org.junit.Test;
 public class EventBusIndexTest {
     private String value;
 
-    /** Ensures the index is actually used and no reflection fall-back kicks in. */
+    /** 确保索引被实际使用，并且没有反射回退。*/
     @Test
     public void testManualIndexWithoutAnnotation() {
         SubscriberInfoIndex index = new SubscriberInfoIndex() {
@@ -34,6 +34,7 @@ public class EventBusIndexTest {
             @Override
             public SubscriberInfo getSubscriberInfo(Class<?> subscriberClass) {
                 Assert.assertEquals(EventBusIndexTest.class, subscriberClass);
+                //自定义Subscriber方法信息
                 SubscriberMethodInfo[] methodInfos = {
                         new SubscriberMethodInfo("someMethodWithoutAnnotation", String.class)
                 };

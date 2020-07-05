@@ -21,7 +21,7 @@ import org.greenrobot.eventbus.SubscriberMethod;
  * Uses {@link SubscriberMethodInfo} objects to create {@link org.greenrobot.eventbus.SubscriberMethod} objects on demand.
  */
 public class SimpleSubscriberInfo extends AbstractSubscriberInfo {
-
+    //订阅者类订阅方法信息
     private final SubscriberMethodInfo[] methodInfos;
 
     public SimpleSubscriberInfo(Class subscriberClass, boolean shouldCheckSuperclass, SubscriberMethodInfo[] methodInfos) {

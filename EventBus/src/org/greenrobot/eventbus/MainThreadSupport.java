@@ -18,7 +18,7 @@ package org.greenrobot.eventbus;
 import android.os.Looper;
 
 /**
- * Interface to the "main" thread, which can be whatever you like. Typically on Android, Android's main thread is used.
+ * “主”线程接口，它可以是任何你喜欢。通常在Android上，使用Android的主线程。
  */
 public interface MainThreadSupport {
 
@@ -36,6 +36,7 @@ public interface MainThreadSupport {
 
         @Override
         public boolean isMainThread() {
+            //获取主线程Looper，用于子线程往主线程发消息
             return looper == Looper.myLooper();
         }
 

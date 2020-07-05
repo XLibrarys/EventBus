@@ -18,9 +18,7 @@ package org.greenrobot.eventbus;
 import java.util.logging.Level;
 
 /**
- * Posts events in background.
- *
- * @author Markus
+ * 后台线程发送事件。
  */
 final class BackgroundPoster implements Runnable, Poster {
 
@@ -40,6 +38,7 @@ final class BackgroundPoster implements Runnable, Poster {
             queue.enqueue(pendingPost);
             if (!executorRunning) {
                 executorRunning = true;
+                //线程池子线程执行事件
                 eventBus.getExecutorService().execute(this);
             }
         }

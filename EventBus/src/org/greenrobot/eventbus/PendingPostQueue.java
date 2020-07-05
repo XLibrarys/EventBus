@@ -16,10 +16,16 @@
 
 package org.greenrobot.eventbus;
 
+/**
+ * 等待发送队列
+ */
 final class PendingPostQueue {
+    //队列头
     private PendingPost head;
+    //队列尾
     private PendingPost tail;
 
+    //从队尾入队列
     synchronized void enqueue(PendingPost pendingPost) {
         if (pendingPost == null) {
             throw new NullPointerException("null cannot be enqueued");
@@ -35,6 +41,7 @@ final class PendingPostQueue {
         notifyAll();
     }
 
+    //从队头出队列
     synchronized PendingPost poll() {
         PendingPost pendingPost = head;
         if (head != null) {
@@ -46,6 +53,7 @@ final class PendingPostQueue {
         return pendingPost;
     }
 
+    //延时出队列
     synchronized PendingPost poll(int maxMillisToWait) throws InterruptedException {
         if (head == null) {
             wait(maxMillisToWait);

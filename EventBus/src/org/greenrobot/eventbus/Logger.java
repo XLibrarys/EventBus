@@ -20,6 +20,9 @@ import org.greenrobot.eventbus.android.AndroidLogger;
 
 import java.util.logging.Level;
 
+/**
+ * 日志接口
+ */
 public interface Logger {
 
     void log(Level level, String msg);
